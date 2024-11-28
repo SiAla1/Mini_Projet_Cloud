@@ -13,10 +13,10 @@ const ClientTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const clientResponse = await axios.get('http://localhost:5000/api/clients');
+        const clientResponse = await axios.get('http://localhost:8080/api/clients');
         setClients(clientResponse.data);
 
-        const regionResponse = await axios.get('http://localhost:5000/api/regions');
+        const regionResponse = await axios.get('http://localhost:8080/api/regions');
         setRegions(regionResponse.data);
       } catch (error) {
         console.error('Erreur lors de la récupération des données:', error);
@@ -31,7 +31,7 @@ const ClientTable = () => {
   const handleAddSubmit = async () => {
     try {
       const { nom, prenom, age, region } = newClient;
-      const response = await axios.post('http://localhost:5000/api/clients', {
+      const response = await axios.post('http://localhost:8080/api/clients', {
         nom,
         prenom,
         age,
@@ -48,7 +48,7 @@ const ClientTable = () => {
   const handleEditSubmit = async () => {
     const { ID_client, nom, prenom, age, region } = clientToEdit;
     try {
-      await axios.put(`http://localhost:5000/api/clients/${ID_client}`, {
+      await axios.put(`http://localhost:8080/api/clients/${ID_client}`, {
         nom,
         prenom,
         age,
@@ -64,7 +64,7 @@ const ClientTable = () => {
 
   const deleteClient = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/clients/${id}`);
+      await axios.delete(`http://localhost:8080/api/clients/${id}`);
       setClients(clients.filter(client => client.ID_client !== id));
     } catch (error) {
       console.error('Erreur lors de la suppression:', error);
