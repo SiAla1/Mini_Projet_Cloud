@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 });
 
 // Démarrer le serveur
-const PORT = process.env.PORT || 5000; // Défaut au port 5000 si non défini dans .env
+const PORT = process.env.PORT || 8080; // Défaut au port 8080 si non défini dans .env
 app.listen(PORT, () => {
   console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
 });
